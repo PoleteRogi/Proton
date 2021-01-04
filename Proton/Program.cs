@@ -51,7 +51,7 @@ namespace Proton
                         "           Process process = new System.Diagnostics.Process();" +
                         "           process.StartInfo.FileName = \"proton\";" +
                         "           process.StartInfo.Arguments = \". user\";" +
-                        "           process.StartInfo.WorkingDirectory = Environment.CurrentDirectory;" +
+                        "           process.StartInfo.WorkingDirectory = @\"" + Environment.CurrentDirectory + "\";" +
                         "           process.Start(); " +
                         "           " +
                         "       } " +
