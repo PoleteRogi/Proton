@@ -338,3 +338,6 @@ ASALocalRun/
 
 # BeatPulse healthcheck temp database
 healthchecksdb
+
+Proton/Output/ProtonInstaller.exe
+Proton/proton_win_setup.iss
