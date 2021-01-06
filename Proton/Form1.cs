@@ -34,7 +34,7 @@ namespace Proton
             browser.AddressChanged += Browser_AddressChanged;
             if(Program.executesJs)
             {
-                browser.ExecuteScriptAsync(Program.jsExecuted);
+                browser.ExecuteScriptAsyncWhenPageLoaded(Program.jsExecuted);
             }
         }
 
