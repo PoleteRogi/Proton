@@ -13,6 +13,8 @@ namespace Proton
     {
         public static string htmlPath;
         public static bool isDev;
+        public static bool executesJs;
+        public static string jsExecuted;
         /// <summary>
         /// Punto de entrada principal para la aplicación.
         /// </summary>
@@ -26,6 +28,11 @@ namespace Proton
                     string type = args[1];
                     if (type == "dev") isDev = true;
                     if (type == "user") isDev = false;
+                    if (type == "execJs")
+                    {
+                        executesJs = true;
+                        jsExecuted = args[2];
+                    }
                     htmlPath = Environment.CurrentDirectory + @"\index.html";
                     Application.EnableVisualStyles();
                     Application.SetCompatibleTextRenderingDefault(false);
@@ -74,7 +81,6 @@ namespace Proton
                     }
                     Console.WriteLine("ANTES6");
                     break;
-
             }
             Console.WriteLine("ANTES7");
         }

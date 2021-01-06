@@ -32,6 +32,10 @@ namespace Proton
             ProtonMenuHandler handler = new ProtonMenuHandler();
             browser.MenuHandler = handler;
             browser.AddressChanged += Browser_AddressChanged;
+            if(Program.executesJs)
+            {
+                browser.ExecuteScriptAsync(Program.jsExecuted);
+            }
         }
 
         private void Browser_AddressChanged(object sender, AddressChangedEventArgs e)
