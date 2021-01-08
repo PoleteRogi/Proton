@@ -34,7 +34,9 @@ namespace Proton
             browser.AddressChanged += Browser_AddressChanged;
             if(Program.executesJs)
             {
-                browser.ExecuteScriptAsyncWhenPageLoaded(Program.jsExecuted);
+                StartJSHandler jshandler = new StartJSHandler();
+                jshandler.startScript = Program.jsExecuted;
+                browser.RenderProcessMessageHandler = jshandler;
             }
         }
 
