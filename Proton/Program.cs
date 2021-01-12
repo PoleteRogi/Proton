@@ -15,6 +15,8 @@ namespace Proton
         public static bool isDev;
         public static bool executesJs;
         public static string jsExecuted;
+        public static string titleBarHtml;
+        public static string iconPath;
         /// <summary>
         /// Punto de entrada principal para la aplicación.
         /// </summary>
@@ -34,6 +36,8 @@ namespace Proton
                         jsExecuted = args[2];
                     }
                     htmlPath = Environment.CurrentDirectory + @"\index.html";
+                    titleBarHtml = Environment.CurrentDirectory + @"\titlebar.html";
+                    iconPath = Environment.CurrentDirectory + @"\icon.ico";
                     Application.EnableVisualStyles();
                     Application.SetCompatibleTextRenderingDefault(false);
                     Form1 form = new Form1();
