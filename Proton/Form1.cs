@@ -30,6 +30,7 @@ namespace Proton
         ChromiumWebBrowser titleBar = new ChromiumWebBrowser("file://" + Program.titleBarHtml);
         private void Form1_Load(object sender, EventArgs e)
         {
+            CefSharpSettings.WcfEnabled = true;
             CefSettings settings = new CefSettings();
             Cef.EnableHighDPISupport();
             browser.Dock = DockStyle.Fill;
@@ -53,6 +54,8 @@ namespace Proton
             titleBar.AllowDrop = false;
             guna2Panel3.Controls.Add(titleBar);
             titleBar.MenuHandler = handler;
+            ProtonEssentials proton = new ProtonEssentials(this);
+            browser.JavascriptObjectRepository.Register("proton", proton, isAsync: false, options: BindingOptions.DefaultBinder);
             //Icon = Icon.ExtractAssociatedIcon(Program.iconPath);
             if (Program.isOverlay)
             {
