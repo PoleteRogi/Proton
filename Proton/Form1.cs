@@ -1,5 +1,6 @@
 ﻿using CefSharp;
 using CefSharp.WinForms;
+using Decent.Minecraft.Client.Java;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -19,6 +20,7 @@ namespace Proton
         private bool dragging = false;
         private Point dragCursorPoint;
         private Point dragFormPoint;
+        bool showing = true;
         public Form1()
         {
             InitializeComponent();
@@ -51,7 +53,15 @@ namespace Proton
             titleBar.AllowDrop = false;
             guna2Panel3.Controls.Add(titleBar);
             titleBar.MenuHandler = handler;
-            Icon = Icon.ExtractAssociatedIcon(Program.iconPath);
+            //Icon = Icon.ExtractAssociatedIcon(Program.iconPath);
+            if (Program.isOverlay)
+            {
+                this.Location = new Point(0, 0);
+                this.TopMost = true;
+                guna2ControlBox1.Visible = false;
+                guna2ControlBox2.Location = guna2ControlBox1.Location;
+                KeyPreview = true;
+            }
         }
 
         private void TitleBar_MouseUp(object sender, MouseEventArgs e)
@@ -98,6 +108,30 @@ namespace Proton
         }
 
         private void guna2ControlBox2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
+        {
+            if (keyData == (Keys.Control | Keys.F))
+            {
+                if(showing)
+                {
+                    showing = false;
+                    this.WindowState = FormWindowState.Minimized;
+                }
+                else
+                {
+                    showing = true;
+                    this.WindowState = FormWindowState.Normal;
+                }
+                return true;
+            }
+            return base.ProcessCmdKey(ref msg, keyData);
+        }
+
+        private void guna2Panel2_Paint(object sender, PaintEventArgs e)
         {
 
         }
